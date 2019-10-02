@@ -9,10 +9,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var agreedToTerms = false
+
     var body: some View {
-        Text("Hello World")
+        NavigationView {
+            Form {
+                Section {
+                    Toggle(isOn: $agreedToTerms) {
+                        Text("Agree to terms and conditions")
+                    }
+                }
+
+                Section {
+                    Button(action: {
+                        // show next screen here
+                    }) {
+                        Text("Continue")
+                    }.disabled(!agreedToTerms)
+                }
+            }.navigationBarTitle("Welcome")
+
+        }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
